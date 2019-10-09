@@ -3,11 +3,21 @@
 ## PRE
 set up docker: min 6 GiB memory, 2 CPU cores
 
+### System requirements
+
+- PHP 7.3
+- Composer
+- Docker 
+
 ### Installation
 
 `cd docker`
 
 `docker-compose up -d --build`
+
+`cd ..`
+
+`composer install`
 
 `http://localhost:1080/`
 

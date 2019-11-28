@@ -5,8 +5,6 @@ set up docker: min 6 GiB memory, 2 CPU cores
 
 ### System requirements
 
-- PHP 7.3
-- Composer
 - Docker 
 
 ### Installation
@@ -15,7 +13,9 @@ set up docker: min 6 GiB memory, 2 CPU cores
 
 `docker-compose up -d --build`
 
-`cd ..`
+`docker exec -it sn_php bash`
+
+`cd /var/www/sn`
 
 `composer install`
 
@@ -39,6 +39,4 @@ set up docker: min 6 GiB memory, 2 CPU cores
 
 `docker exec -it sn_php bash`
 
-`cd ..`
-
-`cd sn`
+`cd /var/www/sn`

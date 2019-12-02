@@ -17,7 +17,9 @@ set up docker: min 6 GiB memory, 2 CPU cores
 
 `cd /var/www/sn`
 
-`composer install`
+`composer install --prefer-dist`
+
+`php bin/console d:m:m`
 
 `http://localhost:1080/`
 

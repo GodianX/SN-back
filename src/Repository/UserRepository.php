@@ -49,11 +49,13 @@ class UserRepository extends ServiceEntityRepository
     */
     public function getUserByAge(int $age): array
     {
-        return $this->createQueryBuilder('u')
+        $result =  $this->createQueryBuilder('u')
             ->where('u.age = :age')
             ->setParameter('age', $age)
             ->getQuery()
             ->getArrayResult()
             ;
+
+        return array_shift($result);
     }
 }

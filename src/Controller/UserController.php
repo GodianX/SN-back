@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Service\UserService;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,10 +18,23 @@ class UserController extends AbstractFOSRestController
 
     public function putUserAction(): JsonResponse
     {
-        $this->userService->create();
+        try {
+            $user = $this->userService->create();
+        } catch (\Exception $exception) {
+            return new JsonResponse(
+                [
+                    'status' => 'fail',
+                    'message' => $exception->getMessage(),
+                ],
+                Response::HTTP_OK
+            );
+        }
 
         return new JsonResponse(
-            ['status' => 'success'],
+            [
+                'status' => 'success',
+                'user_name' => $user->getName(),
+            ],
             Response::HTTP_OK
         );
     }

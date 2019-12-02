@@ -42,3 +42,7 @@ set up docker: min 6 GiB memory, 2 CPU cores
 `docker exec -it sn_php bash`
 
 `cd /var/www/sn`
+
+### Testing
+
+`php bin/phpunit`

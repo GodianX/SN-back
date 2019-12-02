@@ -17,7 +17,7 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
-    public function create(): void
+    public function create(): User
     {
         $user = new User();
 
@@ -27,6 +27,8 @@ class UserService
 
         $this->em->persist($user);
         $this->em->flush();
+
+        return $user;
     }
 
     public function getUserByAge(int $age): array

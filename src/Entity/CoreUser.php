@@ -28,6 +28,11 @@ class CoreUser
     private string $login;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $email;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private \DateTimeInterface $registrationDate;
@@ -53,12 +58,12 @@ class CoreUser
      */
     private PersonalInformation $personalInformation;
 
-    public function __construct(int $userType = self::TYPE_WRITER)
+    public function __construct(PersonalInformation $personalInformation, int $userType = self::TYPE_WRITER)
     {
         $this->registrationDate = new \DateTime();
         $this->type = $userType;
         $this->isBanned = false;
-        $this->personalInformation = new PersonalInformation();
+        $this->personalInformation = $personalInformation;
     }
 
     public function getId(): ?int
@@ -122,6 +127,18 @@ class CoreUser
     public function setPersonalInformation(PersonalInformation $personalInformation): self
     {
         $this->personalInformation = $personalInformation;
+
+        return $this;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
